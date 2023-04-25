@@ -188,21 +188,22 @@ end
 -- USER INTERFACE --
 ---------------------------------------
 local dlg = Dialog("[KAM] Isometric Box (Lite)")
-dlg   :separator{ text="Size:" }
-      :slider {id="ySize", label="Left:", min=1, max=maxSize.y, value=5}
-      :slider {id="xSize", label="Right:", min=1, max=maxSize.x, value=5}
-      :slider {id="zSize", label="Height:", min=3, max=maxSize.z, value=10}
+dlg   :separator{ text="Taille:" }
+      :input{id="ySizeT", label="Gauche (Texte):", value=5}
+      :slider {id="ySize", label="Gauche:", min=1, max=maxSize.y, value=5}
+      :slider {id="xSize", label="Droite:", min=1, max=maxSize.x, value=5}
+      :slider {id="zSize", label="Taille:", min=3, max=maxSize.z, value=10}
 
-      :separator{ text="Colors:" }
-      :color {id="strokeColor", label="Stroke:", color = colors.stroke}
+      :separator{ text="Couleurs:" }
+      :color {id="strokeColor", label="Trait:", color = colors.stroke}
       --:color {id="fillColor", label="Fill:", color = colors.fill}
 
       :separator()
-      :radio {id="typeOne", label="Corner:", text="3 px", selected=use3pxCorner}
+      :radio {id="typeOne", label="Coint:", text="3 px", selected=use3pxCorner}
       :radio {id="typeTwo", text="2 px", selected=not use3pxCorner}
 
       :separator()
-      :button {id="ok", text="Add Box",onclick=function()
+      :button {id="ok", text="Ajout Boite",onclick=function()
           local data = dlg.data
           app.transaction(function()
             local cubeType = data.typeOne and 1 or 2
